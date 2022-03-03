@@ -1,15 +1,19 @@
 <html>
     <script>
+
+        // convert simmulacra scroe to fidelity
+        // score = simulacra score
         /*
+        
             From Ruby: 
                 fidelity = ((Math::PI / 2) + Math.atan(Math::PI - (21 * Math::PI * score))) * 3.5292993472
                 fidelity.round(5).clamp(0, 10)
         */
-        // convert simmulacra scroe to fidelity
-        // score = simulacra score
         let ssimulacraToFidlelity = (score) => {
-
-            fidelity = score*23;
+            let fidelity = ((Math.PI / 2) + Math.atan(Math.PI - (21*Math.PI * score))) * 3.5292993472
+            let precision = Math.pow(10,5)
+            fidelity =  Math.round(fidelity * precision) /precision
+            fidelity = Math.max(0, Math.min(10, fidelity))        // fidelity must not be higher than 10, or lower than 0
             return fidelity
         }
 
@@ -21,7 +25,7 @@
     </script>
     <body>
         <h1>Simmulacra to Fidelity Converter</h1>
-        Simmulacra Score: <input id="score" onchange="handler()"> <br><br>
+        Simmulacra Score: <input id="score" onchange="handler()"> <button type="button" onclick="handler()">Convert</button><br><br>
         Fidelity: <input id="fidelity" readonly>
 
     </body>
