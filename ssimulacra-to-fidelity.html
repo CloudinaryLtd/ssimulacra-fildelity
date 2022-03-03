@@ -1,0 +1,28 @@
+<html>
+    <script>
+        /*
+            From Ruby: 
+                fidelity = ((Math::PI / 2) + Math.atan(Math::PI - (21 * Math::PI * score))) * 3.5292993472
+                fidelity.round(5).clamp(0, 10)
+        */
+        // convert simmulacra scroe to fidelity
+        // score = simulacra score
+        let ssimulacraToFidlelity = (score) => {
+
+            fidelity = score*23;
+            return fidelity
+        }
+
+        function handler() {
+            let score = document.getElementById("score").value
+            let fidelity = ssimulacraToFidlelity(score)
+            document.getElementById("fidelity").value = fidelity
+        }
+    </script>
+    <body>
+        <h1>Simmulacra to Fidelity Converter</h1>
+        Simmulacra Score: <input id="score" onchange="handler()"> <br><br>
+        Fidelity: <input id="fidelity" readonly>
+
+    </body>
+</html>
